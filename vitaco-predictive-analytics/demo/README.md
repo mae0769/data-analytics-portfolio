@@ -1,11 +1,29 @@
-# Synthetic demonstration — planned next step
+# Synthetic Decision Tree demonstration
 
-This directory is reserved for a **fully synthetic** demonstration of the analytical workflow.
+This directory contains a **fully synthetic** demonstration of the analytical workflow described in the portfolio case study.
 
-The synthetic dataset will be created independently for this portfolio. It will not be copied, sampled, transformed, or extracted from the academic source datasets.
+The synthetic dataset is generated independently for this portfolio. It is not copied, sampled, transformed, extracted, or otherwise derived from the academic source datasets.
 
-It will be labelled clearly as synthetic and will not be presented as Vitaco data.
+It is **not Vitaco data** and must not be interpreted as representing Vitaco operations, equipment, failure rates, or performance.
 
-The purpose is to make the analytical workflow publicly reproducible without redistributing third-party or assessment data.
+## Contents
 
-**Current status:** no dataset or source-derived records are included yet.
+- `generate_synthetic_data.py` — independently generates the synthetic dataset.
+- `synthetic_machine_condition_demo.csv` — generated synthetic records for demonstration only.
+- `decision_tree_demo.py` — trains and evaluates a Decision Tree using the synthetic data.
+- `WORKFLOW.md` — documents the reproducible analytical workflow.
+
+## Reproducibility
+
+Run the generator first, then run the model:
+
+```bash
+python generate_synthetic_data.py
+python decision_tree_demo.py
+```
+
+The model produces its **own** accuracy, failure recall and confusion matrix from the synthetic data. Those results are separate from the academic case study results reported in the parent portfolio page.
+
+## Publication boundary
+
+No original source rows, values, extracts, cleaned copies, or row-level academic outputs are used in this demonstration. The synthetic data exists specifically to demonstrate the analytical method without redistributing third-party or assessment data.
