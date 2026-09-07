@@ -18,7 +18,7 @@ The synthetic generator creates temporal observations, but the demonstration is 
 
 ### 3. Resource prioritisation
 
-Synthetic product-group data is used to calculate demand–supply gaps and a transparent pressure score combining shortage and service-risk indicators. Groups are ranked into priority tiers. This is decision-support prioritisation, not an optimisation model and does not determine actual production allocation.
+Synthetic product-group data is used to calculate demand–supply gaps and a transparent pressure score combining shortage and service-risk indicators. The demonstration uses equal weighting across the components; those weights are **illustrative rather than empirically calibrated or business-validated**. Groups are ranked into relative priority tiers using quantile bands. These tiers are demonstration thresholds, not validated operational thresholds. This is decision-support prioritisation, not an optimisation model and does not determine actual production allocation.
 
 ## Why synthetic data?
 
