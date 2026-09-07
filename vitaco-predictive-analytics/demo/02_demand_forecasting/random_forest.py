@@ -24,7 +24,10 @@ TARGET = "actual_demand"
 
 
 def mape(actual, predicted):
-    return (abs((actual - predicted) / actual).replace([float("inf")], pd.NA).dropna().mean() * 100)
+    actual = pd.Series(actual)
+    predicted = pd.Series(predicted)
+    mask = actual != 0
+    return (abs((actual[mask] - predicted[mask]) / actual[mask]).mean() * 100)
 
 
 def evaluate(actual, predicted):
@@ -50,11 +53,11 @@ def main():
     baseline_metrics = evaluate(test[TARGET], test["existing_forecast"])
 
     print("Synthetic demand-forecast challenge")
-    print(f"Test period starts: {cutoff.date()}")
+    print(f"Test period starts: {pd.Timestamp(cutoff).date()}")
     print("Random Forest:", {k: round(v, 3) for k, v in model_metrics.items()})
     print("Existing forecast:", {k: round(v, 3) for k, v in baseline_metrics.items()})
     print("Top features:")
-    print(pd.Series(model.feature_importances_, index=FEATURES).sort_values(ascending=False).head(5).round(3))\    
+    print(pd.Series(model.feature_importances_, index=FEATURES).sort_values(ascending=False).head(5).round(3))
 
 
 if __name__ == "__main__":
