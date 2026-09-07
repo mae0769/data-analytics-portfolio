@@ -1,20 +1,22 @@
 # Synthetic Decision Tree demonstration
 # This script is independently written and uses only the synthetic dataset.
 
+from pathlib import Path
+
 import pandas as pd
+from sklearn.metrics import accuracy_score, confusion_matrix, recall_score
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import accuracy_score, confusion_matrix, recall_score
 
-DATA_PATH = "synthetic_machine_condition_demo.csv"
+DATA_PATH = Path(__file__).with_name("synthetic_machine_condition_demo.csv")
 
 FEATURES = [
-    "cutting_force",
-    "coolant_temperature",
-    "torque",
-    "hydraulic_pressure",
-    "spindle_speed",
-    "coolant_pressure",
+    "process_load",
+    "thermal_load",
+    "drive_torque",
+    "fluid_pressure",
+    "rotation_rate",
+    "flow_pressure",
 ]
 
 
@@ -22,7 +24,7 @@ def main():
     df = pd.read_csv(DATA_PATH)
 
     X = df[FEATURES]
-    y = df["machine_failure"]
+    y = df["failure_flag"]
 
     # Stratified split is used only for this synthetic demonstration.
     # It is not a reconstruction of the academic modelling procedure.
