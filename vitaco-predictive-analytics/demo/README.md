@@ -9,15 +9,18 @@ It is **not Vitaco data** and must not be interpreted as representing Vitaco ope
 ## Contents
 
 - `generate_synthetic_data.py` — independently generates the synthetic dataset.
-- `synthetic_machine_condition_demo.csv` — generated synthetic records for demonstration only.
-- `decision_tree_demo.py` — trains and evaluates a Decision Tree using the synthetic data.
+- `decision_tree_demo.py` — trains and evaluates a Decision Tree using the generated synthetic data.
 - `WORKFLOW.md` — documents the reproducible analytical workflow.
+- `requirements.txt` — Python dependencies for the demonstration.
+
+The generated CSV is intentionally not committed; it can be recreated deterministically from the generator using seed 42.
 
 ## Reproducibility
 
-Run the generator first, then run the model:
+From this directory, run:
 
 ```bash
+pip install -r requirements.txt
 python generate_synthetic_data.py
 python decision_tree_demo.py
 ```
