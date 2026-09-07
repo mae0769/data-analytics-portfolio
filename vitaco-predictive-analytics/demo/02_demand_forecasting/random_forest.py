@@ -41,8 +41,9 @@ def evaluate(actual, predicted):
 
 
 def main():
-    df = pd.read_csv(DATA_PATH, parse_dates=["month"]).sort_values("month")
-    cutoff = df["month"].sort_values().unique()[-3]
+    df = pd.read_csv(DATA_PATH, parse_dates=["month"]).sort_values(["month", "sku_id"])
+    unique_months = df["month"].drop_duplicates().sort_values().to_numpy()
+    cutoff = unique_months[-3]
     train = df[df["month"] < cutoff]
     test = df[df["month"] >= cutoff]
 
