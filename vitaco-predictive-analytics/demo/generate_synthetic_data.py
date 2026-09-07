@@ -43,36 +43,64 @@ def generate_machine_data(rng, n_rows=1200):
 
 
 def generate_demand_data(rng, n_skus=24, months=18):
+    """Create planning predictors from information available before demand_t.
+
+    Actual demand is generated from prior demand plus trend/seasonality/noise.
+    Forecast, replenishment and inventory variables use lagged information so
+    the demonstration does not manufacture leakage from the target itself.
+    """
     rows = []
     dates = pd.date_range("2025-01-01", periods=months, freq="MS")
+
     for sku_idx in range(n_skus):
         sku = f"SKU_{sku_idx + 1:02d}"
         base = rng.uniform(300, 1200)
         trend = rng.uniform(-0.01, 0.025)
         seasonal_phase = rng.uniform(0, 2 * np.pi)
-        previous = base
+        previous_demand = base
+        previous_forecast = base
+        previous_on_hand = base * rng.uniform(0.25, 0.50)
+
         for month_idx, date in enumerate(dates):
             seasonal = 1 + 0.12 * np.sin(2 * np.pi * month_idx / 12 + seasonal_phase)
-            demand = max(50, previous * (1 + trend) * seasonal + rng.normal(0, base * 0.08))
-            existing_forecast = max(50, demand * (1 + rng.normal(0, 0.14)) + rng.normal(0, base * 0.05))
-            safety_stock = max(40, base * rng.uniform(0.12, 0.22))
-            reorder_point = safety_stock + base * rng.uniform(0.25, 0.45)
-            planned_receipts = max(0, demand * rng.uniform(0.72, 1.05))
-            on_hand = max(0, rng.normal(base * 0.35, base * 0.12))
+            expected_demand = max(50, previous_demand * (1 + trend) * seasonal)
+
+            # Planning inputs are constructed before the current target occurs.
+            historical_demand = previous_demand
+            existing_forecast = max(
+                50,
+                0.65 * previous_forecast
+                + 0.35 * historical_demand * seasonal
+                + rng.normal(0, base * 0.05),
+            )
+            safety_stock = max(40, historical_demand * rng.uniform(0.12, 0.22))
+            reorder_point = safety_stock + historical_demand * rng.uniform(0.25, 0.45)
+            planned_receipts = max(0, existing_forecast * rng.uniform(0.80, 1.05))
+            on_hand = max(0, previous_on_hand + planned_receipts - historical_demand)
             lead_time = rng.integers(5, 31)
+
+            actual_demand = max(
+                50,
+                expected_demand + rng.normal(0, base * 0.08),
+            )
+
             rows.append({
                 "month": date,
                 "sku_id": sku,
-                "historical_demand": round(previous, 2),
+                "historical_demand": round(historical_demand, 2),
                 "existing_forecast": round(existing_forecast, 2),
                 "safety_stock": round(safety_stock, 2),
                 "reorder_point": round(reorder_point, 2),
                 "planned_receipts": round(planned_receipts, 2),
                 "on_hand": round(on_hand, 2),
                 "lead_time_days": int(lead_time),
-                "actual_demand": round(demand, 2),
+                "actual_demand": round(actual_demand, 2),
             })
-            previous = demand
+
+            previous_demand = actual_demand
+            previous_forecast = existing_forecast
+            previous_on_hand = on_hand
+
     return pd.DataFrame(rows)
 
 
