@@ -6,6 +6,7 @@ not as an independent benchmark-free forecast.
 
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
@@ -24,10 +25,10 @@ TARGET = "actual_demand"
 
 
 def mape(actual, predicted):
-    actual = pd.Series(actual)
-    predicted = pd.Series(predicted)
+    actual = np.asarray(actual, dtype=float)
+    predicted = np.asarray(predicted, dtype=float)
     mask = actual != 0
-    return (abs((actual[mask] - predicted[mask]) / actual[mask]).mean() * 100)
+    return np.mean(np.abs((actual[mask] - predicted[mask]) / actual[mask])) * 100
 
 
 def evaluate(actual, predicted):
