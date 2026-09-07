@@ -1,12 +1,14 @@
-# Vitaco Health Group — Predictive Analytics & Business Intelligence
+# Predictive Analytics & Business Intelligence
 
-**Academic case study | Public-proxy data analysis**
+**Vitaco-inspired academic case study · Independent synthetic demonstration**
 
 ## Publication and data-safety boundary
 
-This portfolio case study is a curated adaptation of postgraduate academic work. It is **not** a reproduction of the original assessment submission and is not an official report, operational assessment, or publication of Vitaco Health Group.
+This portfolio case study is a curated adaptation of postgraduate academic work. It is **not a reproduction of the original assessment submission** and is not an official report, operational assessment, or publication of Vitaco Health Group.
 
-The analysis examined three proposed decision requirements associated with the Vitaco case using public proxy datasets. The datasets used were **not Vitaco proprietary or internal datasets**, so the findings do not assess Vitaco's actual operational performance, systems, forecasts, inventory, production capability, or business decisions.
+The academic analysis examined three proposed decision requirements associated with the Vitaco case using public proxy datasets. The datasets used were **not Vitaco proprietary or internal datasets**, so the findings do not assess Vitaco's actual operational performance, systems, forecasts, inventory, production capability, or business decisions.
+
+The accompanying demonstration code uses **independently generated synthetic data**. It is not Vitaco data and is not copied, sampled, transformed, extracted, or derived from the academic source datasets.
 
 **Conservative publication rule:** no raw dataset, extracted dataset, cleaned dataset, generated dataset copy, row-level prediction output, or other redistribution of source data is included in this repository. Dataset redistribution is not assumed from public availability alone.
 
@@ -58,7 +60,7 @@ The strongest tree splits involved variables including cutting force, coolant te
 
 Python was used to prepare the planning data, exclude variables identified as potentially target-derived, apply a chronological train/test split, train a Random Forest regression model, and evaluate the resulting predictions. Power BI was used to present forecast alignment, model error and feature-importance results.
 
-On the **two-month test period** used in the analysis, the Random Forest produced:
+On the **two-month test period** used in the academic analysis, the Random Forest produced:
 
 | Metric | Random Forest |
 |---|---:|
@@ -97,6 +99,8 @@ The third analysis shifted from prediction to prioritisation. Demand, planned re
 The purpose was to **rank where management review should begin**, rather than to perform full optimisation.
 
 In the analysed proxy data, Packaging generated the strongest combined shortage-pressure signal, followed by Solvents and Additives. These are analytical rankings from the proxy dataset, **not recommendations for Vitaco's actual production allocation**.
+
+The portfolio demonstration implements the pressure score as an **illustrative, equally weighted heuristic**. The weights are not empirically calibrated or business-validated, and the resulting quantile tiers are relative demonstration bands rather than validated operational thresholds.
 
 Full optimisation would require additional decision variables and constraints such as:
 
@@ -141,6 +145,7 @@ The important competency is not simply achieving a metric. It is determining **w
 - The downtime analysis identifies associations with failure outcomes but does not establish causality.
 - Predictor timing and provenance would require operational verification before deployment.
 - Allocation-pressure analysis supports prioritisation rather than constrained optimisation.
+- The pressure score is an illustrative heuristic rather than a validated business metric.
 - Operational deployment would require governed internal data, validation, monitoring, business rules and appropriate decision controls.
 
 ---
@@ -161,4 +166,3 @@ The underlying datasets are intentionally **not included** in this repository.
 The analysis used public proxy datasets solely for the academic exercise. Dataset availability on a public platform is not treated as permission to redistribute the data.
 
 This page is a **curated portfolio adaptation of postgraduate academic work**. It is not the original university submission, does not reproduce the original appendices or working files, and does not include lecturer feedback, assessment marks, assessment rubrics, raw data, cleaned data, or row-level outputs.
-
