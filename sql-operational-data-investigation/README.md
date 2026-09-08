@@ -19,6 +19,8 @@ The project uses a small relational data model and analytical SQL to move from r
 
 **Business question → data quality → SQL investigation → comparative evidence → decision focus**
 
+> **SQL interrogates the data. Analytics interprets what the answers mean. Decision-making determines what to do about them.**
+
 The project deliberately distinguishes association from causation. A high delay rate identifies an area for investigation; it does not establish that the area causes the delay.
 
 ## Data model
