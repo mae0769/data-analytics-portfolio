@@ -49,13 +49,12 @@ def build_data():
     )
     promised_days = rng.integers(2, 8, n_orders)
 
+    promised_dates = order_dates + pd.to_timedelta(promised_days, unit="D")
     orders = pd.DataFrame({
         "order_id": np.arange(1, n_orders + 1),
         "customer_id": rng.integers(1, 101, n_orders),
-        "order_date": order_dates.dt.strftime("%Y-%m-%d"),
-        "promised_date": (
-            order_dates + pd.to_timedelta(promised_days, unit="D")
-        ).strftime("%Y-%m-%d"),
+        "order_date": order_dates.strftime("%Y-%m-%d"),
+        "promised_date": promised_dates.strftime("%Y-%m-%d"),
     })
 
     items_per_order = rng.integers(1, 4, n_orders)
@@ -92,8 +91,8 @@ def build_data():
         "fulfilment_id": np.arange(1, n_orders + 1),
         "order_id": orders["order_id"],
         "warehouse_id": warehouse,
-        "pick_date": pick_dates.dt.strftime("%Y-%m-%d"),
-        "ship_date": ship_dates.dt.strftime("%Y-%m-%d"),
+        "pick_date": pick_dates.strftime("%Y-%m-%d"),
+        "ship_date": ship_dates.strftime("%Y-%m-%d"),
     })
 
     return customers, products, warehouses, orders, order_items, fulfilments
