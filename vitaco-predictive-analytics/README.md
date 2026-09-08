@@ -12,7 +12,9 @@ The accompanying demonstration code uses **independently generated synthetic dat
 
 **Conservative publication rule:** no raw dataset, extracted dataset, cleaned dataset, generated dataset copy, row-level prediction output, or other redistribution of source data is included in this repository. Dataset redistribution is not assumed from public availability alone.
 
-The Machine Downtime Analysis dataset was identified on Kaggle as Apache 2.0. The Demand & Supply Planning dataset was identified as **"Other (specified in description)"**; because its redistribution rights were not established, no copy of that dataset is included here.
+### Dataset provenance and publication boundary
+
+The original academic case study used datasets identified on Kaggle. The Machine Downtime Analysis dataset is listed under the **Apache 2.0** licence. The Demand & Supply Planning dataset is listed as **"Other (specified in description)"**; because permission to redistribute that dataset could not be verified from the available licence information, **no copy of that dataset is included in this portfolio**. Public availability is not treated as permission to redistribute data.
 
 ---
 
