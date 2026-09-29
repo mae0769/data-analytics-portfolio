@@ -138,7 +138,9 @@ The three methods serve different analytical jobs:
 The important competency is not simply achieving a metric. It is determining **what the metric supports, what it does not support, and what decision should remain with a human reviewer**.
 
 ---
-## Visual evidence
+## Visual evidence (synthetic demonstration)
+
+> These charts come from the synthetic demo in `demo/`, not the academic analysis, so the numbers differ from the results reported above.
 
 ### Failure classification
 
