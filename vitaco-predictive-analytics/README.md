@@ -138,6 +138,21 @@ The three methods serve different analytical jobs:
 The important competency is not simply achieving a metric. It is determining **what the metric supports, what it does not support, and what decision should remain with a human reviewer**.
 
 ---
+## Visual evidence
+
+### Failure classification
+
+![Decision Tree confusion matrix](visuals/failure-confusion-matrix.png)
+
+The confusion matrix shows why failure-class recall matters alongside overall accuracy. The model is positioned as an early-warning review layer rather than an automated maintenance trigger.
+
+### Demand forecast challenge
+
+![Demand forecast comparison](visuals/forecast-vs-actual.png)
+
+The Random Forest is presented as a model-based challenge/correction signal against the existing forecast, not as an independent replacement forecast.
+
+---
 
 ## 6. Limitations
 
