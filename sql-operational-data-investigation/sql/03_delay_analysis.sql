@@ -41,7 +41,7 @@ ORDER BY delayed_records DESC;
 -- Average delay duration among delayed orders
 SELECT
     w.warehouse_name,
-    ROUND(AVG(JULIANDAY(f.ship_date) - JULIANDAY(o.promised_date), 2), 2) AS avg_days_late
+    ROUND(AVG(JULIANDAY(f.ship_date) - JULIANDAY(o.promised_date)), 2) AS avg_days_late
 FROM orders AS o
 JOIN fulfilments AS f ON o.order_id = f.order_id
 JOIN warehouses AS w ON f.warehouse_id = w.warehouse_id

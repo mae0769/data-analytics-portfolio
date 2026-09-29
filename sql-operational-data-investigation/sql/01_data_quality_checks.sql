@@ -19,13 +19,13 @@ FROM fulfilments
 WHERE warehouse_id IS NULL;
 
 -- 4. Fulfilment activity before the order was placed
-SELECT fulfilment_id, order_id, pick_date, ship_date, order_date
+SELECT f.fulfilment_id, f.order_id, f.pick_date, f.ship_date, o.order_date
 FROM fulfilments AS f
 JOIN orders AS o ON f.order_id = o.order_id
 WHERE DATE(f.pick_date) < DATE(o.order_date);
 
 -- 5. Shipments after the promised date
-SELECT fulfilment_id, order_id, ship_date, promised_date
+SELECT f.fulfilment_id, f.order_id, f.ship_date, o.promised_date
 FROM fulfilments AS f
 JOIN orders AS o ON f.order_id = o.order_id
 WHERE DATE(f.ship_date) > DATE(o.promised_date);
