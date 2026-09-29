@@ -59,6 +59,27 @@ Before interpreting results, the project checks for issues such as:
 
 The objective is to demonstrate that analytical querying begins with establishing whether the underlying records are fit for the question being asked.
 
+## Visual evidence
+
+### Delay rate by warehouse
+
+![Delay rate by warehouse](visuals/warehouse-delay-rate.png)
+
+Warehouse D has the highest observed delay rate in the synthetic dataset and is the clearest investigation priority.
+
+### Product category comparison
+
+![Delay rate by product category](visuals/category-delay-rate.png)
+
+Category delay rates remain within a narrow range, providing little evidence that product category differentiates delay performance in this synthetic dataset.
+
+### Monthly trend
+
+![Monthly delay trend](visuals/monthly-delay-trend.png)
+
+December shows a sharp month-on-month increase, but the rolling average does not indicate a sustained deterioration.
+
+
 ## Decision boundary
 
 The output is an **investigation-prioritisation analysis**, not an operational optimisation model. It does not determine staffing levels, warehouse capacity, inventory policy, or root cause automatically.
