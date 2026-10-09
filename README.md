@@ -2,7 +2,7 @@
 
 **Data analysis · research · predictive modelling · business intelligence**
 
-This portfolio presents selected analytical work focused on turning business questions into structured analysis, evaluated models, and decision-support outputs.
+This portfolio is where I practise and consolidate work from my postgraduate coursework, using synthetic data. It focuses on turning business questions into structured analysis, evaluated models and decision-support outputs.
 
 ## Featured projects
 
@@ -54,4 +54,4 @@ Dataset availability on a public platform is not treated as permission to redist
 
 ## About the portfolio
 
-The portfolio is a professional demonstration of applied analytics, research reasoning, modelling, SQL investigation, data quality awareness, and business interpretation.
+These projects are practice work, built to consolidate my postgraduate coursework in analytics, SQL and business interpretation.
